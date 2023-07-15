@@ -23,7 +23,7 @@ def get_columns(filters):
             "fieldtype": "Link",
             "fieldname": "so_no",
             "options": "Sales Order",
-            "width": 200,
+            "width": 170,
         },
         {
             "label": _("SO Date"),
@@ -36,42 +36,42 @@ def get_columns(filters):
             "fieldtype": "Link",
             "fieldname": "item_name",
             "options": "Item",
-            "width": 130,
+            "width": 220,
         },
         {
             "label": _("Customer Name"),
             "fieldtype": "Link",
             "fieldname": "customer_name",
             "options": "Customer",
-            "width": 100,
+            "width": 200,
         },
 		{
             "label": _("Phone No"),
             "fieldtype": "Data",
             "fieldname": "phone_no",
-            "width": 100,
+            "width": 120,
         },
 		{
             "label": _("SO Qty"),
             "fieldtype": "Float",
             "fieldname": "so_qty",
-            "width": 100,
+            "width": 70,
         },
 		{
             "label": _("PO Created"),
             "fieldtype": "Data",
             "fieldname": "po_created",
-            "width": 100,
+            "width": 80,
         },
         {
             "label": _("PO No"),
             "fieldtype": "Link",
             "fieldname": "po_no",
             "options": "Purchase Order",
-            "width": 200,
+            "width": 170,
         },
 		{
-            "label": _("Material Receiving"),
+            "label": _("Material Received"),
             "fieldtype": "Data",
             "fieldname": "material_receiving",
             "width": 100,
@@ -108,13 +108,18 @@ def get_entries(filters):
     query = """
        SELECT
             so.name AS so_no, so.transaction_date AS so_date, so.customer AS customer_name, soi.item_name AS item_name, cus.phone_no AS phone_no, soi.qty AS so_qty,
-            IF(poi.parent IS NOT NULL, 'Yes', 'No') AS po_created, poi.parent AS po_no,
+            # IF(poi.parent IS NOT NULL, 'Yes', 'No') AS po_created, poi.parent AS po_no,
             CASE
-                WHEN sum(poi.stock_qty) != sum(poi.received_qty) AND sum(poi.received_qty) = 0 THEN 'No'
-                WHEN sum(poi.stock_qty) = sum(poi.received_qty) THEN 'Yes'
-                WHEN sum(poi.stock_qty) != sum(poi.received_qty) AND sum(poi.received_qty) != 0 THEN 'Partial'
-                ELSE ''
-            END AS material_receiving,
+                WHEN (SELECT COUNT(*) FROM `tabPurchase Order Item` poi WHERE poi.sales_order_item_cf = soi.name) >= 1 THEN 'Yes'
+                ELSE 'No'
+            END AS po_created,
+            (SELECT GROUP_CONCAT(poi.parent) FROM `tabPurchase Order Item` poi WHERE poi.sales_order_item_cf = soi.name) AS po_no,
+            # CASE
+            #     WHEN sum(poi.stock_qty) != sum(poi.received_qty) AND sum(poi.received_qty) = 0 THEN 'No'
+            #     WHEN sum(poi.stock_qty) = sum(poi.received_qty) THEN 'Yes'
+            #     WHEN sum(poi.stock_qty) != sum(poi.received_qty) AND sum(poi.received_qty) != 0 THEN 'Partial'
+            #     ELSE ''
+            # END AS material_receiving,
             sum(wo.produced_qty) AS produced_qty, (sum(wo.qty) - sum(wo.produced_qty)) AS under_process_qty, soi.delivered_qty AS delivered_qty,(soi.qty - soi.delivered_qty) AS to_deliver_qty
         FROM
             `tabSales Order` so
@@ -124,8 +129,8 @@ def get_entries(filters):
             `tabCustomer` cus ON so.customer = cus.name
         LEFT JOIN
             `tabWork Order` wo ON so.name = wo.sales_order
-        LEFT JOIN
-            `tabPurchase Order Item` poi ON soi.name = poi.sales_order_item
+        # LEFT JOIN
+        #     `tabPurchase Order Item` poi ON soi.name = poi.sales_order_item_cf
     
         WHERE
 

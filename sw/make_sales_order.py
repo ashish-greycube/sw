@@ -1,7 +1,8 @@
 import frappe
 from frappe import _
 from frappe.model.mapper import get_mapped_doc
-from frappe.utils import flt, getdate, nowdate
+from frappe.utils import flt, getdate, nowdate,today
+import datetime
 
 @frappe.whitelist()
 def make_sales_order(source_name, target_doc=None):
@@ -22,10 +23,10 @@ def make_sales_order(source_name, target_doc=None):
                         'uom':bom_item.uom,
                         'stock_uom':bom_item.stock_uom,
                         'conversion_factor':bom_item.conversion_factor,
-                        # check
-                        # 'schedule_date':sales_order_item.delivery_date,
+                        'schedule_date':today(),
                         'sales_order':source.name,
-                        'sales_order_item':sales_order_item.name
+                        # 'sales_order_item':sales_order_item.name
+                        'sales_order_item_cf':sales_order_item.name
                     })
             else:
                 for sales_order_item in source.get('items'):
@@ -36,10 +37,10 @@ def make_sales_order(source_name, target_doc=None):
                     'uom':sales_order_item.uom,
                     'stock_uom':sales_order_item.stock_uom,
                     'conversion_factor':sales_order_item.conversion_factor,
-# to check
-                    # 'schedule_date':sales_order_item.delivery_date,
+                    'schedule_date':today(),
                     'sales_order':source.name,
-                    'sales_order_item':sales_order_item.name
+                    'sales_order_item_cf':sales_order_item.name
+                    # 'sales_order_item':sales_order_item.name
                 })
         target.run_method("set_missing_values")
         target.run_method("get_schedule_dates")
@@ -63,6 +64,6 @@ def make_sales_order(source_name, target_doc=None):
         target_doc,
         set_missing_values,
     )
-    # to check
+   
     # doclist.set_onload("ignore_price_list", True)
     return doclist
