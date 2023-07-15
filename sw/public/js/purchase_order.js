@@ -1,7 +1,5 @@
 frappe.ui.form.on('Purchase Order', {
 	refresh:function(frm) {
-
-		
 		frm.add_custom_button("Sales Order",function(){
             if (!frm.doc.supplier) {
 				frappe.msgprint("Select a Supplier first before getting items from Sales Order");
@@ -21,6 +19,5 @@ frappe.ui.form.on('Purchase Order', {
                 }
             })
 		},"Get Items From");
-				
 	}
 })

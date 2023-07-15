@@ -115,7 +115,7 @@ def get_entries(filters):
                 WHEN sum(poi.stock_qty) != sum(poi.received_qty) AND sum(poi.received_qty) != 0 THEN 'Partial'
                 ELSE ''
             END AS material_receiving,
-            wo.produced_qty AS produced_qty, (wo.qty - wo.produced_qty) AS under_process_qty, soi.delivered_qty AS delivered_qty,(soi.qty - soi.delivered_qty) AS to_deliver_qty
+            sum(wo.produced_qty) AS produced_qty, (sum(wo.qty) - sum(wo.produced_qty)) AS under_process_qty, soi.delivered_qty AS delivered_qty,(soi.qty - soi.delivered_qty) AS to_deliver_qty
         FROM
             `tabSales Order` so
         INNER JOIN
@@ -137,7 +137,6 @@ def get_entries(filters):
     entries = frappe.db.sql(query, filters, as_dict=True,debug=True)
     return entries
 
-
 def get_conditions(filters):
     # conditions = ""
     conditions = " AND so.docstatus = 1"
@@ -150,5 +149,4 @@ def get_conditions(filters):
         conditions += " and so.customer = %(customer_name)s"
     if filters.get("so_no"):
         conditions += " and so.name = %(so_no)s"
-
     return conditions

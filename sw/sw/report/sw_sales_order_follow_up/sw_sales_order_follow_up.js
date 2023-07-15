@@ -10,7 +10,7 @@ frappe.query_reports["SW Sales Order Follow Up"] = {
             "fieldname": "from_date",
             "label": "From Date",
             "fieldtype": "Date",
-            "reqd": 0
+            "default":frappe.datetime.add_months(frappe.datetime.month_start(), -1)
         },
         {
             "fieldname": "to_date",
