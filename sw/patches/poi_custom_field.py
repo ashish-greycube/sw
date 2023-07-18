@@ -2,7 +2,7 @@ import frappe
 from frappe.custom.doctype.custom_field.custom_field import create_custom_fields
 
 def execute():
-    print("creating sales_order_item_cf in POI")
+    print("creating sales_order_item_cf in POI...")
     custom_fields = {
         "Purchase Order Item": [
             dict(
