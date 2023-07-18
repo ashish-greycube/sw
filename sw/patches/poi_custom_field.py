@@ -6,9 +6,9 @@ def execute():
         "Purchase Order Item": [
             dict(
                 fieldname="sales_order_item_cf",
-                label="Sales Order Item cf",
+                label="Sales Order Item CF",
                 fieldtype="Data",
-                insert_after="sales_order",
+                insert_after="sales_order_item",
             ),    
         ]   
     }

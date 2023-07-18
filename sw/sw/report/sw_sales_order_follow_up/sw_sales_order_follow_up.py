@@ -105,7 +105,10 @@ def get_columns(filters):
 
 def get_entries(filters):
     conditions = get_conditions(filters)
-    # To create multiple PO for same SO, and to remove erpnext's standard validations, need to create sales_order_item_cf custom field to store hex code of SO item name in PO item. By this way, we can fetch BOM item for SO item in PO item table without any validations of more qty of SO.
+    # To create multiple PO for same SO, and to remove erpnext's standard validations, 
+    # need to create sales_order_item_cf custom field to store hex code of SO item name in PO item. 
+    # By this way, we can fetch BOM item for SO item in PO item table without any validations of more qty of SO.
+    # It doesn't allow PO item qty > SO item qty. And in our case, PO item qty will be > as we are pulling BOM item qty
 
     query = """
        SELECT

@@ -14,8 +14,7 @@ frappe.ui.form.on('Purchase Order', {
                     transaction_date: frm.doc.transaction_date
                 },
                 get_query_filters: {
-                    docstatus: 1,
-                    status: ["not in", ["Stopped", "Expired"]],
+                    docstatus: 1
                 }
             })
 		},"Get Items From");
