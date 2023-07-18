@@ -9,8 +9,7 @@ def execute():
                 label="Sales Order Item cf",
                 fieldtype="Data",
                 insert_after="sales_order",
-            ),
-             
+            ),    
         ]   
     }
 

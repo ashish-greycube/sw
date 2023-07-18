@@ -25,7 +25,6 @@ def make_sales_order(source_name, target_doc=None):
                         'conversion_factor':bom_item.conversion_factor,
                         'schedule_date':today(),
                         'sales_order':source.name,
-                        # 'sales_order_item':sales_order_item.name
                         'sales_order_item_cf':sales_order_item.name
                     })
             else:
@@ -40,7 +39,6 @@ def make_sales_order(source_name, target_doc=None):
                     'schedule_date':today(),
                     'sales_order':source.name,
                     'sales_order_item_cf':sales_order_item.name
-                    # 'sales_order_item':sales_order_item.name
                 })
         target.run_method("set_missing_values")
         target.run_method("get_schedule_dates")
@@ -65,5 +63,4 @@ def make_sales_order(source_name, target_doc=None):
         set_missing_values,
     )
    
-    # doclist.set_onload("ignore_price_list", True)
     return doclist
