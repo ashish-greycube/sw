@@ -28,7 +28,6 @@ def make_sales_order(source_name, target_doc=None):
                         'sales_order_item_cf':sales_order_item.name
                     })
             else:
-                for sales_order_item in source.get('items'):
                     target.append('items',{
                     'item_code':sales_order_item.item_code,
                     'item_name':sales_order_item.item_name,
