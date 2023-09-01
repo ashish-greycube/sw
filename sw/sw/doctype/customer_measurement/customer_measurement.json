@@ -1,0 +1,137 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2023-09-01 14:58:16.012373",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "posting_date",
+  "assign_to",
+  "qtn_reference",
+  "customer",
+  "customer_name",
+  "wpc",
+  "upvc",
+  "column_break_6w6dl",
+  "created_by",
+  "location",
+  "so_reference",
+  "phone_no",
+  "naming_series",
+  "section_break_nv45p",
+  "customer_measurement_detail"
+ ],
+ "fields": [
+  {
+   "default": "Today",
+   "fieldname": "posting_date",
+   "fieldtype": "Date",
+   "label": "Posting Date",
+   "options": "Today"
+  },
+  {
+   "fieldname": "assign_to",
+   "fieldtype": "Link",
+   "label": "Assign To",
+   "options": "User"
+  },
+  {
+   "fieldname": "qtn_reference",
+   "fieldtype": "Link",
+   "label": "QTN Reference",
+   "options": "Quotation"
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "label": "Customer",
+   "options": "Customer"
+  },
+  {
+   "fieldname": "customer_name",
+   "fieldtype": "Data",
+   "label": "Customer Name"
+  },
+  {
+   "default": "0",
+   "fieldname": "wpc",
+   "fieldtype": "Check",
+   "label": "WPC"
+  },
+  {
+   "default": "0",
+   "fieldname": "upvc",
+   "fieldtype": "Check",
+   "label": "UPVC"
+  },
+  {
+   "fieldname": "column_break_6w6dl",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "created_by",
+   "fieldtype": "Link",
+   "label": "Created By",
+   "options": "User"
+  },
+  {
+   "fieldname": "location",
+   "fieldtype": "Data",
+   "label": "Location"
+  },
+  {
+   "fieldname": "so_reference",
+   "fieldtype": "Link",
+   "label": "SO Reference",
+   "options": "Sales Order"
+  },
+  {
+   "fieldname": "phone_no",
+   "fieldtype": "Data",
+   "label": "Phone No"
+  },
+  {
+   "default": "CM-.{qtn_reference}.-.{so_reference}.-##",
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Naming Series",
+   "options": "CM-.{qtn_reference}.-.{so_reference}.-##"
+  },
+  {
+   "fieldname": "customer_measurement_detail",
+   "fieldtype": "Table",
+   "label": "Customer Measurement Detail",
+   "options": "Customer Measurement Detail"
+  },
+  {
+   "fieldname": "section_break_nv45p",
+   "fieldtype": "Section Break"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2023-09-01 15:15:58.819527",
+ "modified_by": "Administrator",
+ "module": "SW",
+ "name": "Customer Measurement",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}
