@@ -50,6 +50,7 @@
    "options": "Customer"
   },
   {
+   "fetch_from": "customer.customer_name",
    "fieldname": "customer_name",
    "fieldtype": "Data",
    "label": "Customer Name"
@@ -88,17 +89,18 @@
    "options": "Sales Order"
   },
   {
+   "fetch_from": "customer.phone_no",
    "fieldname": "phone_no",
    "fieldtype": "Data",
    "label": "Phone No"
   },
   {
-   "default": "CM-.{qtn_reference}.-.{so_reference}.-##",
+   "default": "CM-.##",
    "fieldname": "naming_series",
    "fieldtype": "Select",
    "hidden": 1,
    "label": "Naming Series",
-   "options": "CM-.{qtn_reference}.-.{so_reference}.-##"
+   "options": "CM-.##"
   },
   {
    "fieldname": "customer_measurement_detail",
@@ -113,7 +115,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-09-01 15:15:58.819527",
+ "modified": "2023-09-04 09:51:24.528799",
  "modified_by": "Administrator",
  "module": "SW",
  "name": "Customer Measurement",
