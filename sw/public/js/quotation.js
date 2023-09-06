@@ -1,23 +1,3 @@
-// frappe.ui.form.on('Quotation', {
-// 	refresh:function(frm) {
-// 		frm.add_custom_button("Customer Measurement",function(){
-//             var customerMeasurement = frappe.new_doc("Customer Measurement", {
-                
-//                 customer: frm.doc.party_name,
-// 				qtn_reference : frm.doc.name,
-
-// 			})
-// 			customerMeasurement.save().then(function() {
-//                 frappe.set_route("Form", "Customer Measurement", customerMeasurement.name);
-//             });
-            
-// 		});
-// 	}
-// })
-
-
-
-
 frappe.ui.form.on('Quotation', {
     refresh: function(frm) {
         frappe.call({
