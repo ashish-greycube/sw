@@ -54,7 +54,8 @@
    "fetch_from": "customer.customer_name",
    "fieldname": "customer_name",
    "fieldtype": "Data",
-   "label": "Customer Name"
+   "label": "Customer Name",
+   "read_only": 1
   },
   {
    "default": "0",
@@ -94,15 +95,8 @@
    "fetch_from": "customer.phone_no",
    "fieldname": "phone_no",
    "fieldtype": "Data",
-   "label": "Phone No"
-  },
-  {
-   "default": "CM-.##",
-   "fieldname": "naming_series",
-   "fieldtype": "Select",
-   "hidden": 1,
-   "label": "Naming Series",
-   "options": "CM-.##"
+   "label": "Phone No",
+   "read_only": 1
   },
   {
    "fieldname": "customer_measurement_detail",
@@ -113,11 +107,19 @@
   {
    "fieldname": "section_break_nv45p",
    "fieldtype": "Section Break"
+  },
+  {
+   "default": "CM-.###",
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Naming Series",
+   "options": "CM-.###"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-09-08 11:48:44.603460",
+ "modified": "2023-09-08 13:12:53.518286",
  "modified_by": "Administrator",
  "module": "SW",
  "name": "Customer Measurement",
