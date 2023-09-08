@@ -41,7 +41,8 @@
    "fieldname": "qtn_reference",
    "fieldtype": "Link",
    "label": "QTN Reference",
-   "options": "Quotation"
+   "options": "Quotation",
+   "read_only": 1
   },
   {
    "fieldname": "customer",
@@ -86,7 +87,8 @@
    "fieldname": "so_reference",
    "fieldtype": "Link",
    "label": "SO Reference",
-   "options": "Sales Order"
+   "options": "Sales Order",
+   "read_only": 1
   },
   {
    "fetch_from": "customer.phone_no",
@@ -115,7 +117,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-09-04 09:51:24.528799",
+ "modified": "2023-09-08 11:48:44.603460",
  "modified_by": "Administrator",
  "module": "SW",
  "name": "Customer Measurement",
