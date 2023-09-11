@@ -18,7 +18,6 @@ frappe.ui.form.on('Sales Order', {
 
                             // Save the Customer Measurement document with updated so_reference
                             if (!frm.is_new()) {
-                                console.log("frm is new");
                                 frappe.call({
                                     method: "sw.sales_order_checkcm.update_customer_measurement",
                                     args: {
