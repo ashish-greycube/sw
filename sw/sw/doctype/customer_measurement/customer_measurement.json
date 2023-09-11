@@ -9,7 +9,7 @@
  "field_order": [
   "posting_date",
   "assign_to",
-  "qtn_reference",
+  "qtn_reference_cf",
   "customer",
   "customer_name",
   "wpc",
@@ -17,7 +17,7 @@
   "column_break_6w6dl",
   "created_by",
   "location",
-  "so_reference",
+  "so_reference_cf",
   "phone_no",
   "naming_series",
   "section_break_nv45p",
@@ -36,13 +36,6 @@
    "fieldtype": "Link",
    "label": "Assign To",
    "options": "User"
-  },
-  {
-   "fieldname": "qtn_reference",
-   "fieldtype": "Link",
-   "label": "QTN Reference",
-   "options": "Quotation",
-   "read_only": 1
   },
   {
    "fieldname": "customer",
@@ -74,6 +67,7 @@
    "fieldtype": "Column Break"
   },
   {
+   "default": "User",
    "fieldname": "created_by",
    "fieldtype": "Link",
    "label": "Created By",
@@ -83,13 +77,6 @@
    "fieldname": "location",
    "fieldtype": "Data",
    "label": "Location"
-  },
-  {
-   "fieldname": "so_reference",
-   "fieldtype": "Link",
-   "label": "SO Reference",
-   "options": "Sales Order",
-   "read_only": 1
   },
   {
    "fetch_from": "customer.phone_no",
@@ -102,7 +89,8 @@
    "fieldname": "customer_measurement_detail",
    "fieldtype": "Table",
    "label": "Customer Measurement Detail",
-   "options": "Customer Measurement Detail"
+   "options": "Customer Measurement Detail",
+   "reqd": 1
   },
   {
    "fieldname": "section_break_nv45p",
@@ -115,11 +103,25 @@
    "hidden": 1,
    "label": "Naming Series",
    "options": "CM-.###"
+  },
+  {
+   "fieldname": "qtn_reference_cf",
+   "fieldtype": "Link",
+   "label": "QTN Reference",
+   "options": "Quotation",
+   "read_only": 1
+  },
+  {
+   "fieldname": "so_reference_cf",
+   "fieldtype": "Link",
+   "label": "SO Reference",
+   "options": "Sales Order",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-09-08 13:12:53.518286",
+ "modified": "2023-09-11 11:33:38.902415",
  "modified_by": "Administrator",
  "module": "SW",
  "name": "Customer Measurement",

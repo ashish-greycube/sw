@@ -24,6 +24,15 @@
   {
    "hidden": 0,
    "is_query_report": 0,
+   "label": "Purchase Order",
+   "link_to": "Purchase Order",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
    "label": "Sales Order",
    "link_to": "Sales Order",
    "link_type": "DocType",
@@ -33,8 +42,17 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Purchase Order",
-   "link_to": "Purchase Order",
+   "label": "Quotation",
+   "link_to": "Quotation",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Customer Measurement",
+   "link_to": "Customer Measurement",
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
@@ -57,7 +75,7 @@
    "type": "Link"
   }
  ],
- "modified": "2023-07-18 12:58:00.287223",
+ "modified": "2023-09-11 07:51:48.532274",
  "modified_by": "Administrator",
  "module": "SW",
  "name": "SW",

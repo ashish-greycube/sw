@@ -11,11 +11,13 @@
   "thickness",
   "color_code",
   "supplier",
+  "column_break_anycb",
   "note",
   "attachment"
  ],
  "fields": [
   {
+   "columns": 1,
    "fieldname": "height",
    "fieldtype": "Float",
    "in_list_view": 1,
@@ -23,6 +25,7 @@
    "reqd": 1
   },
   {
+   "columns": 1,
    "fieldname": "width",
    "fieldtype": "Float",
    "in_list_view": 1,
@@ -30,6 +33,7 @@
    "reqd": 1
   },
   {
+   "columns": 1,
    "fieldname": "thickness",
    "fieldtype": "Float",
    "in_list_view": 1,
@@ -37,12 +41,14 @@
    "reqd": 1
   },
   {
+   "columns": 1,
    "fieldname": "color_code",
    "fieldtype": "Data",
    "in_list_view": 1,
    "label": "Color Code"
   },
   {
+   "columns": 2,
    "fieldname": "supplier",
    "fieldtype": "Select",
    "in_list_view": 1,
@@ -50,8 +56,9 @@
    "options": "\nUAE\nChineese\nSaudi"
   },
   {
+   "columns": 3,
    "fieldname": "note",
-   "fieldtype": "Data",
+   "fieldtype": "Small Text",
    "in_list_view": 1,
    "label": "Note",
    "reqd": 1
@@ -61,12 +68,16 @@
    "fieldtype": "Attach",
    "in_list_view": 1,
    "label": "Attachment"
+  },
+  {
+   "fieldname": "column_break_anycb",
+   "fieldtype": "Column Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2023-09-04 08:10:09.130046",
+ "modified": "2023-09-11 09:47:39.519799",
  "modified_by": "Administrator",
  "module": "SW",
  "name": "Customer Measurement Detail",

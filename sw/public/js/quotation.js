@@ -4,29 +4,28 @@ frappe.ui.form.on('Quotation', {
             method: 'frappe.client.get_list',
             args: {
                 doctype: 'Customer Measurement',
-                filters: { qtn_reference: frm.doc.name },
+                filters: { qtn_reference_cf: frm.doc.name },
                 limit: 1,
             },
             callback: function(r) {
                 if (r.message && r.message.length > 0) {
-                    frm.remove_custom_button("Customer Measurement");
+                    frm.remove_custom_button("Create Measurement");
                 } else {
-                    frm.add_custom_button("Customer Measurement", function() {
-                        frappe.new_doc("Customer Measurement", {
-                            customer: frm.doc.party_name,
-                            qtn_reference: frm.doc.name,
-                            
-                        }).then(function(doc) {
-                            frappe.set_route("Form", "Customer Measurement", doc.name);
+                    if (!frm.is_new()){
+
+                        frm.add_custom_button("Create Measurement", function() {
+                            frappe.new_doc("Customer Measurement", {
+                                customer: frm.doc.party_name,
+                                qtn_reference_cf: frm.doc.name,
+                                
+                            }).then(function(doc) {
+                                frappe.set_route("Form", "Customer Measurement", doc.name);
+                            });
                         });
-                    });
+                    }
                 }
             }
         });
     }
-
-
-	
-
 });
 
