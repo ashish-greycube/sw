@@ -34,9 +34,9 @@ frappe.ui.form.on('Sales Order', {
     // then if QTN has CM linked then update that CM with SO name 
 
     after_save: function(frm){
-        if(!frm.is_new() && frm.doc.items && frm.doc.items[0] && frm.doc.items[0].prevdoc_docname){
+        if(frm.doc.items && frm.doc.items[0] && frm.doc.items[0].prevdoc_docname){
             frappe.db.get_list('Customer Measurement', {
-                                fields: ['name'],
+                                fields: ['name','so_reference_cf'],
                                 filters: {
                                     qtn_reference_cf: frm.doc.items[0].prevdoc_docname
                                 }
@@ -44,7 +44,7 @@ frappe.ui.form.on('Sales Order', {
                 console.log("Quotation with linked CM found. So update so field in CM");
                 // frappe.msgprint("Update CM");
 
-                if (records[0] && records[0].so_reference_cf==null) {
+                if (records && records[0] && records[0].so_reference_cf==null) {
                     console.log("calling function to update cm");
 
                     frappe.call({
@@ -199,35 +199,35 @@ frappe.ui.form.on('Sales Order', {
 //     }
 // });
 
-function hideCustomerMeasurementButton(frm) {
+// function hideCustomerMeasurementButton(frm) {
 
-    frm.remove_custom_button('Create Measurement');
-}
+//     frm.remove_custom_button('Create Measurement');
+// }
 
-function showCustomerMeasurementButton(frm) {
+// function showCustomerMeasurementButton(frm) {
 
-    frappe.call({
-        method: 'frappe.client.get_list',
-        args: {
-            doctype: 'Customer Measurement',
-            filters: {
-                so_reference_cf: frm.doc.name
-            },
-            limit: 1,
-        },
-        callback: function (r) {
-            if (r.message && r.message.length > 0) {
-                frm.remove_custom_button('Create Measurement');
-            } else {
-                frm.add_custom_button(__('Create Measurement'), function () {
-                    frappe.new_doc('Customer Measurement', {
-                        customer: frm.doc.customer,
-                        so_reference_cf: frm.doc.name,
-                    }).then(function (doc) {
-                        frappe.set_route('Form', 'Customer Measurement', doc.name);
-                    });
-                });
-            }
-        },
-    });
-}
+//     frappe.call({
+//         method: 'frappe.client.get_list',
+//         args: {
+//             doctype: 'Customer Measurement',
+//             filters: {
+//                 so_reference_cf: frm.doc.name
+//             },
+//             limit: 1,
+//         },
+//         callback: function (r) {
+//             if (r.message && r.message.length > 0) {
+//                 frm.remove_custom_button('Create Measurement');
+//             } else {
+//                 frm.add_custom_button(__('Create Measurement'), function () {
+//                     frappe.new_doc('Customer Measurement', {
+//                         customer: frm.doc.customer,
+//                         so_reference_cf: frm.doc.name,
+//                     }).then(function (doc) {
+//                         frappe.set_route('Form', 'Customer Measurement', doc.name);
+//                     });
+//                 });
+//             }
+//         },
+//     });
+// }
