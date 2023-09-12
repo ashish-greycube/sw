@@ -2,17 +2,17 @@ import frappe
 from frappe import _
 
 
-@frappe.whitelist()
-def check_customer_measurement(qtn_reference_cf):
-    measurement_documents = frappe.get_list(
-        'Customer Measurement',
-        filters={'qtn_reference_cf': qtn_reference_cf},
-        fields=['name']
-    )
-    if measurement_documents:
-        return measurement_documents[0].name
-    else:
-        return None
+# @frappe.whitelist()
+# def check_customer_measurement(qtn_reference_cf):
+#     measurement_documents = frappe.get_list(
+#         'Customer Measurement',
+#         filters={'qtn_reference_cf': qtn_reference_cf},
+#         fields=['name']
+#     )
+#     if measurement_documents:
+#         return measurement_documents[0].name
+#     else:
+#         return None
     
 @frappe.whitelist()
 def update_customer_measurement(cm_docname, so_reference_cf):
