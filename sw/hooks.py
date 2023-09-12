@@ -45,11 +45,11 @@ doctype_js = {
     "Sales Order": "public/js/sales_order.js",
 }
 
-doc_events = {
-    "Sales Order": {
-        "after_save": "sw.sales_order_checkcm.update_cm_so_reference"
-    }
-}
+# doc_events = {
+#     "Sales Order": {
+#         "after_save": "sw.sales_order_checkcm.update_cm_so_reference"
+#     }
+# }
 
 
 # Home Pages
